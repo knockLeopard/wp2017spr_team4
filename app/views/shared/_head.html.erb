@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<head>
+	<title>Wordometer: How repetitive are your word choices?</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Dave Shea">
+	<meta name="description" content="A demonstration of what can be accomplished visually through CSS-based design.">
+	<meta name="robots" content="all">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<style>
+	table {
+		    font-family: 'Open Sans', Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+		    border-collapse: collapse;
+		    font-size: 20px;
+		    width: 50%;
+		    margin-left: auto;
+		    margin-right: auto;
+		    margin-top: 50px;
+		    margin-bottom: auto;
+		}
+
+		td, th {
+		    border: 0px solid #dddddd;
+		    text-align: left;
+		    padding: 15px;
+		}
+
+		tr:nth-child(even) {
+		    background-color: white;
+		}
+
+	</style>
+	
+</head>
+<body id="css-zen-garden">
+ 
+<div class="page-wrapper">
+
+	<section class="intro" id="zen-intro">
+		<header role="banner">
+			<h1>Wordometer</h1>
+			<h2>How repetitive are your word choices?</h2>
+		</header>
+
+		<div class="summary" id="zen-summary" role="article">
+			<p>Before you submit your essay, copy & paste your essay to WORDOMETER to figure out which words you used too much.</p>
+			<p>Remember. Repetitive word choices are the biggest pet peeve of English Professors! Why get a bad grade when you can seach for synonyms with one click?</p>
+
+			 <p><br>
+			<a href="javascript:fnMove('zen-supporting')" class="myButton">직접 붙여넣기</a><br><br>
+			<a href="javascript:fnMove('txtDivide')" class="myButton">txt 파일 선택</a><br><br>
+			<a href="javascript:fnMove('docDivide')" class="myButton">doc 파일 선택</a>
+			</p>
+			
+		
+		</div>
+		
+	</section>
+
+
+	<div class="main supporting" id="zen-supporting" role="main">
+		<div class="explanation" id="zen-explanation" role="article">
+			    
+			   
+
+
+		<div class="fix">
+		
+			     <div id="wordcloud"></div>
+			     </div>
+				    
+<%= render 'shared/example' %>
+
+
+				<div class="fix">
+ 			    <textarea id="text-area" style="margin:auto" name="essay" placeholder="Paste your essay here." rows="20" cols="70" required></textarea>
+		
+			<div class="counterDiv">
+			<div class="buttons">
+			<a href="javascript:translateWithGoogle()" class="myButton">Google Translate</a>
+			<a href="javascript:submitTextArea()" class="myButton">Submit</a>
+			<a href="javascript:deleteTextArea()" class="myButton">Delete</a>
+			<a href="javascript:fnMove('statisDiv')" class="myButton">통계</a>
+			</div>
+			</div>
+						
+			</div>
+			<div class="counterDiv">
+						Words: <span id="wordCount">0</span><br/>
+			            Total Characters(including trails): <span id="totalChars">0</span><br/>
+			            Characters (excluding trails): <span id="charCount">0</span><br/>
+			            Characters (excluding all spaces): <span id="charCountNoSpace">0</span>
+			</div>
+			<script>
+				counter = function() {
+							    var value = $('#text-area').val();
+
+							    if (value.length == 0) {
+							        $('#wordCount').html(0);
+							        $('#totalChars').html(0);
+							        $('#charCount').html(0);
+							        $('#charCountNoSpace').html(0);
+							        return;
+							    }
+
+							    var regex = /\s+/gi;
+							    var wordCount = value.trim().replace(regex, ' ').split(' ').length;
+							    var totalChars = value.length;
+							    var charCount = value.trim().length;
+							    var charCountNoSpace = value.replace(regex, '').length;
+
+							    $('#wordCount').html(wordCount);
+							    $('#totalChars').html(totalChars);
+							    $('#charCount').html(charCount);
+							    $('#charCountNoSpace').html(charCountNoSpace);
+							};
+
+
+
+							$(document).ready(function() {
+							    $('#count').click(counter);
+							    $('#text-area').change(counter);
+							    $('#text-area').keydown(counter);
+							    $('#text-area').keypress(counter);
+							    $('#text-area').keyup(counter);
+							    $('#text-area').blur(counter);
+							    $('#text-area').focus(counter);
+							});
+				
+			</script>
+		
+			            
+			        
+          	</div>
+

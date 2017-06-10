@@ -1,0 +1,18 @@
+<div id="txtDivide">
+<div class="participation" id="zen-participation" role="article">
+<div class="txtSubmit" id="txtDiv">
+<label for="fileInput">Upload Your TXT file</label>
+<input type="file" id="fileInput">
+</div>
+</div>
+</div>
+<div id="docDivide">
+<div class="main supporting" id="zen-participation" role="article">
+<div class="docSubmitArea" id="docDiv">
+<%= form_tag({action: :upload}, multipart: true) do |f| %>
+  <%= file_field_tag :picture, :class => "docSubmit" %>   <br><br>      <%= button_tag :submit, :formtarget => "_blank", :class => "docSubmit" %>
+<% end %>
+</div>
+
+</div>
+</div>

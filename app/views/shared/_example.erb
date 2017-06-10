@@ -1,0 +1,12 @@
+<script>
+						d3.wordcloud()
+				        .size([800, 350])
+				        .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
+				        .words(words)
+				        .onwordclick(function(d, i) {
+				          if (d.href) { window.location = d.href; }
+				        })
+				        .start();
+
+
+</script>
